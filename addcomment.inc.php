@@ -9,17 +9,30 @@ if (isset($_SESSION['valid_recipe_user']) && $_SESSION['can_post_comments'] === 
     $poster = isset($_SESSION['valid_recipe_user']) ? $_SESSION['valid_recipe_user'] : "Anonymous";
 
     // Connecting to db
-    $servername = $config['db_host'];
-    $username = $config['db_user'];
-    $password = $config['db_pass'];
-    $dbname = $config['db_name'];
+
+    // //Get Heroku ClearDB connection information
+    // $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+    // $cleardb_server = $cleardb_url["host"];
+    // $cleardb_username = $cleardb_url["user"];
+    // $cleardb_password = $cleardb_url["pass"];
+    // $cleardb_db = substr($cleardb_url["path"], 1);
+    // $active_group = 'default';
+    // $query_builder = TRUE;
+    // // Connect to DB
+    // $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
+
+    // $servername = $config['db_host'];
+    // $username = $config['db_user'];
+    // $password = $config['db_pass'];
+    // $dbname = $config['db_name'];
+
     // $servername = "localhost";
     // $username = "test";
     // $password = "test159951test!";
     // $dbname = "recipe";
 
     // Creating connection with db
-    $conn = new mysqli($servername, $username, $password, $dbname);
+    // $conn = new mysqli($servername, $username, $password, $dbname);
 
     // Checking connection
     if ($conn->connect_error) {

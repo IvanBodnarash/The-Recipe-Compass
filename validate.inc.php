@@ -7,14 +7,14 @@ session_start();
 // $_SESSION['valid_recipe_user'] = $userid;
 // $_SESSION['can_post_comments'] = true; // Set the user to be able to add comments
 
-// Connecting to db
-$servername = $config['db_host'];
-$username = $config['db_user'];
-$password = $config['db_pass'];
-$dbname = $config['db_name'];
+// // Connecting to db
+// $servername = $config['db_host'];
+// $username = $config['db_user'];
+// $password = $config['db_pass'];
+// $dbname = $config['db_name'];
 
-// Creating connection with db
-$conn = new mysqli($servername, $username, $password, $dbname);
+// // Creating connection with db
+// $conn = new mysqli($servername, $username, $password, $dbname);
 
 // Connection check
 if ($conn->connect_error) {
