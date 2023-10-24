@@ -8,6 +8,9 @@ session_start();
 // $_SESSION['can_post_comments'] = true; // Set the user to be able to add comments
 
 // // Connecting to db
+
+//Get Heroku ClearDB connection information
+
 // $servername = $config['db_host'];
 // $username = $config['db_user'];
 // $password = $config['db_pass'];

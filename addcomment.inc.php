@@ -8,19 +8,6 @@ if (isset($_SESSION['valid_recipe_user']) && $_SESSION['can_post_comments'] === 
     // Get the username from the session if available
     $poster = isset($_SESSION['valid_recipe_user']) ? $_SESSION['valid_recipe_user'] : "Anonymous";
 
-    // Connecting to db
-
-    // //Get Heroku ClearDB connection information
-    // $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-    // $cleardb_server = $cleardb_url["host"];
-    // $cleardb_username = $cleardb_url["user"];
-    // $cleardb_password = $cleardb_url["pass"];
-    // $cleardb_db = substr($cleardb_url["path"], 1);
-    // $active_group = 'default';
-    // $query_builder = TRUE;
-    // // Connect to DB
-    // $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
-
     // $servername = $config['db_host'];
     // $username = $config['db_user'];
     // $password = $config['db_pass'];

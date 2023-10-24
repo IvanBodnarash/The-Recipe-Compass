@@ -7,15 +7,27 @@
 // ];
 
 //Get Heroku ClearDB connection information
-$cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-$cleardb_server = $cleardb_url["host"];
-$cleardb_username = $cleardb_url["user"];
-$cleardb_password = $cleardb_url["pass"];
-$cleardb_db = substr($cleardb_url["path"], 1);
+$cleardb_url = parse_url(getenv("mysql://bd7250df98d251:69baea4d@us-cdbr-east-06.cleardb.net/heroku_e0a2fe3a1b49d9f?reconnect=true"));
+$cleardb_server = $cleardb_url["us-cdbr-east-06.cleardb.net"];
+$cleardb_username = $cleardb_url["bd7250df98d251"];
+$cleardb_password = $cleardb_url["69baea4d"];
+$cleardb_db = substr($cleardb_url["heroku_e0a2fe3a1b49d9f"], 1);
 $active_group = 'default';
 $query_builder = TRUE;
 
 // Connect to DB
 $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
+
+// //Get Heroku ClearDB connection information
+// $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+// $cleardb_server = $cleardb_url["host"];
+// $cleardb_username = $cleardb_url["user"];
+// $cleardb_password = $cleardb_url["pass"];
+// $cleardb_db = substr($cleardb_url["path"], 1);
+// $active_group = 'default';
+// $query_builder = TRUE;
+
+// // Connect to DB
+// $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 
 ?>

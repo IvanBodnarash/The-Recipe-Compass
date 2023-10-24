@@ -2,6 +2,7 @@
 require 'config.php';
 
 // // Connecting to db
+
 // $servername = $config['db_host'];
 // $username = $config['db_user'];
 // $password = $config['db_pass'];

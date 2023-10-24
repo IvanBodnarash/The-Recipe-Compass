@@ -9,7 +9,10 @@ if (!isset($_SESSION['valid_recipe_user'])) {
     echo "<a href=\"index.php\">Return to Home</a>\n";
     exit;
 }
+
+
 // Connecting to db
+
 // $servername = $config['db_host'];
 // $username = $config['db_user'];
 // $password = $config['db_pass'];
