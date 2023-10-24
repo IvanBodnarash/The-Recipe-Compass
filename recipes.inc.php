@@ -49,7 +49,7 @@ if (mysqli_num_rows($result) == 0) {
         echo "<a href=\"index.php?content=showrecipe&id=$recipeid\">$title</a> submitted by $poster <br>\n";
         echo "$shortdesc<br><br>\n";
         echo "<img src=\"img/$image\" width=\"200px\" alt=\"Hey\"><br><br>\n";
-        var_dump($image);
+        // var_dump($image);
     }
 }
 
