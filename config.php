@@ -7,17 +7,33 @@
 // ];
 
 //Get Heroku ClearDB connection information
-$cleardb_url = "mysql://bd7250df98d251:69baea4d@us-cdbr-east-06.cleardb.net/heroku_e0a2fe3a1b49d9f?reconnect=true";
-$cleardb_parts = parse_url($cleardb_url);
-$cleardb_server = $cleardb_parts["us-cdbr-east-06.cleardb.net"];
-$cleardb_username = $cleardb_parts["bd7250df98d251"];
-$cleardb_password = $cleardb_parts["69baea4d"];
-$cleardb_db = ltrim($cleardb_parts["heroku_e0a2fe3a1b49d9f"], "/");
-$active_group = 'default';
-$query_builder = TRUE;
 
-// Connect to DB
-$conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
+
+$cleardb_server = "us-cdbr-east-06.cleardb.net";
+$cleardb_username = "bd7250df98d251";
+$cleardb_password = "69baea4d";
+$cleardb_db = "heroku_e0a2fe3a1b49d9f";
+
+// Підключення до бази даних
+$conn = new mysqli($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
+
+// Перевірка з'єднання
+if ($conn->connect_error) {
+    die("Помилка підключення до бази даних: " . $conn->connect_error);
+}
+
+
+// $cleardb_url = "mysql://bd7250df98d251:69baea4d@us-cdbr-east-06.cleardb.net/heroku_e0a2fe3a1b49d9f?reconnect=true";
+// $cleardb_parts = parse_url($cleardb_url);
+// $cleardb_server = $cleardb_parts["us-cdbr-east-06.cleardb.net"];
+// $cleardb_username = $cleardb_parts["bd7250df98d251"];
+// $cleardb_password = $cleardb_parts["69baea4d"];
+// $cleardb_db = ltrim($cleardb_parts["heroku_e0a2fe3a1b49d9f"], "/");
+// $active_group = 'default';
+// $query_builder = TRUE;
+
+// // Connect to DB
+// $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 
 // //Get Heroku ClearDB connection information
 // $cleardb_url = parse_url(getenv("mysql://bd7250df98d251:69baea4d@us-cdbr-east-06.cleardb.net/heroku_e0a2fe3a1b49d9f?reconnect=true"));
