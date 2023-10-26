@@ -4,7 +4,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="mystyle.css" />
     <link rel="stylesheet" media="print" type="text/css" href="print.css" />
-    <title>The Recipe Center</title>
+    <title>The Recipe Compass</title>
 </head>
 
 <body>

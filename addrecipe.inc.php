@@ -57,6 +57,11 @@ $directions = $_POST['directions'];
 
 // } 
 
+// Connecting to Dropbox API
+
+require 'vendor/autoload.php';
+
+
 if (!empty($_FILES['file'])) {
     $file = $_FILES['file'];
     $name = $file['name'];
