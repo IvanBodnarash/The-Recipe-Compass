@@ -1,6 +1,0 @@
-mysql://bd7250df98d251:69baea4d@us-cdbr-east-06.cleardb.net/heroku_e0a2fe3a1b49d9f?reconnect=true
-
-UN: bd7250df98d251
-PW: 69baea4d
-
-host: us-cdbr-east-06.cleardb.net
