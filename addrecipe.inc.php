@@ -1,5 +1,6 @@
 <?php
 require 'config.php';
+require 'vendor/autoload.php';
 
 // Auth check
 session_start();
@@ -40,72 +41,32 @@ $ingredients = $_POST['ingredients'];
 $directions = $_POST['directions'];
 
 
-
-// if(!empty($_FILES['file'])) {
-//     $file = $_FILES['file'];
-//     $name = $file['name'];
-//     $pathFile = __DIR__ . '/img/' . $name;
-
-//     if (!move_uploaded_file($file['tmp_name'], $pathFile)) {
-//         echo 'File was not uploaded';
-//     }
-
-//     $data = $conn->prepare("INSERT INTO 'recipes' ('image_path') VALUES (?)");
-//     $data->bind_param("s", $name);
-//     $data->execute();
-
-
-// } 
-
-// Connecting to Dropbox API
-require 'vendor/autoload.php';
-
-$appKey = '3bbpgkxqnvzkrds';
-$appSecret = 'nhgmcersm4t6o1e';
-$accessToken = 'sl.BoxJZvarhDxjfH1bmnOR-rYyPhavDBqqygrs0eOjMbwDXaGzX0pIooOLAqO9TtUYUqfPz70bijqj2vhcmkLT5T6lZh5mJjgRwnZICXSSCW4yiRmeCbPi5I_3-QNYl1lhin5mW6DMcUnV';
-
-$client = new \Dropbox\Client($accessToken, $appKey, $appSecret);
-
 // File upload processing
-if (isset($_FILES['file'])) {
-    $file = $_FILES['file'];
-    $name = $file['name'];
-    $pathFile = __DIR__ .'/img/'. $name;
 
-    // Make sure that folder for file storage exists
-    if (!file_exists(__DIR__ .'/img/')) {
-        mkdir(__DIR__ . '/img/', 0755, true);
-    }
+// Initialize Filestack
+use Filestack\FilestackClient;
 
-    if (move_uploaded_file($file['tmp_name'], $pathFile)) {
-        $file = fopen($pathFile,'rb');
-        $uploadFileName = '/uploads' . basename($name);
+$client = new FilestackClient($filestack_api_key);
 
-        // Uploading file to Dropbox
-        $result = $client->uploadFile($uploadFileName, Dropbox\WriteMode::add(), $file);
-        fclose($file);
+// Upload the image to Filestack
+$response = $client->upload(['files' => fopen($_FILES['file']['tmp_name'], 'r')]);
 
-        // Retrieving link for uploaded file
-        $sharedLink = $client->createShareableLink($result['path']);
+// Get the Filestack URL of the uploaded image
+$image_url = $response->url;
 
-        $data = $conn->prepare("INSERT INTO recipes (title, poster, shortdesc, ingredients, directions, image_path) VALUES (?, ?, ?, ?, ?, ?)");
-        $data->bind_param("ssssss", $title, $poster, $shortdesc, $ingredients, $directions, $name);
-        $data->execute();
-        $data->close();
-    
-        // Execute the query
-        echo "<h2>Recipe posted</h2>\n";
-    
-        echo "<script>
-                    setTimeout(function() {
-                        window.location.href = 'index.php';
-                    }, 3000);
-                </script>";
-    }
-} else {
-    echo "<h2>Sorry, there was a problem posting your recipe</h2>";
-    echo "<p>Error: " . $data->error . "</p>";
-}
+$data = $conn->prepare("INSERT INTO recipes (title, poster, shortdesc, ingredients, directions, image_path) VALUES (?, ?, ?, ?, ?, ?)");
+$data->bind_param("ssssss", $title, $poster, $shortdesc, $ingredients, $directions, $image_url);
+$data->execute();
+$data->close();
+
+// Execute the query
+echo "<h2>Recipe posted</h2>\n";
+
+echo "<script>
+                setTimeout(function() {
+                    window.location.href = 'index.php';
+                }, 3000);
+            </script>";
 
 // if (!empty($_FILES['file'])) {
 //     $file = $_FILES['file'];

@@ -1,8 +1,10 @@
 {
+    "require": {
+        "filestack/filestack-php": "*"
+    },
     "config": {
         "github-oauth": {
-            "github.com": "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"
+            "github.com": "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"
         }
     }
-    
 }

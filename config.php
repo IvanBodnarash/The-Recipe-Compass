@@ -14,12 +14,16 @@ $cleardb_username = "bd7250df98d251";
 $cleardb_password = "69baea4d";
 $cleardb_db = "heroku_e0a2fe3a1b49d9f";
 
-// Підключення до бази даних
+// Filestack api key
+
+$filestack_api_key = "AwxQNt5QZCr9LcJtnxGBQz";
+
+// Connecting to database
 $conn = new mysqli($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 
-// Перевірка з'єднання
+// Checking connection
 if ($conn->connect_error) {
-    die("Помилка підключення до бази даних: " . $conn->connect_error);
+    die("Connection to db error: " . $conn->connect_error);
 }
 
 //
