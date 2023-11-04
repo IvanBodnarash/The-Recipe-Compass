@@ -20,6 +20,7 @@
         <input type="hidden" name="image_url" id="image-url">
     </div> -->
 
+    <!-- <input type="file" name="file" accept="image/*"><br> -->
     <input type="file" name="file" accept="image/*"><br>
 
     <input type="submit" value="submit">
