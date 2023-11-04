@@ -46,7 +46,8 @@ $directions = $_POST['directions'];
 // Initialize Filestack
 use Filestack\FilestackClient;
 
-$client = new FilestackClient($filestack_api_key);
+// $client = new FilestackClient($filestack_api_key);
+$client = new FilestackClient('AwxQNt5QZCr9LcJtnxGBQz');
 
 if (!empty($_FILES['file'])) {
     $file = $_FILES['file'];

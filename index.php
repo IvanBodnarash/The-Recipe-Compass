@@ -61,9 +61,6 @@
             ?>
         </div>
 
-        <!-- <div id="news">
-            <?php include("news.inc.php"); ?>
-        </div> -->
     </div>
 
     <div id="footer">
