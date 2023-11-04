@@ -50,10 +50,10 @@ use Filestack\FilestackClient;
 $client = new FilestackClient('AwxQNt5QZCr9LcJtnxGBQz');
 
 if (!empty($_FILES['file'])) {
-    $file = $_FILES['file'];
+    $file = $_FILES['file']['tmp_name'];
 
     // Upload the image to Filestack
-    $response = $client->upload(['files' => fopen($file['tmp_name'], 'r')]);
+    $response = $client->upload(['files' => fopen($file, 'r')]);
 
     // Get the Filestack URL of the uploaded image
     $image_url = $response->url;
