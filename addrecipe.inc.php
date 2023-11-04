@@ -50,13 +50,13 @@ use Filestack\FilestackClient;
 $client = new FilestackClient('AwxQNt5QZCr9LcJtnxGBQz');
 
 if (!empty($_FILES['file'])) {
-    $file = $_FILES['file']['tmp_name'];
+    $file = $_FILES['file'];
 
     // Upload the image to Filestack
-    $response = $client->upload(['files' => fopen($file, 'r')]);
+    $response = $client->upload($file['tmp_name']);
 
     // Get the Filestack URL of the uploaded image
-    $image_url = $response->url;
+    $image_url = $response->getUrl();
     echo "File uploaded successfully. URL: $image_url";
 
     $data = $conn->prepare("INSERT INTO recipes (title, poster, shortdesc, ingredients, directions, image_path) VALUES (?, ?, ?, ?, ?, ?)");
