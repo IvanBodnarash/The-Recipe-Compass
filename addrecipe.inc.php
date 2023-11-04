@@ -48,13 +48,16 @@ use Filestack\FilestackClient;
 
 $client = new FilestackClient($filestack_api_key);
 
-if (isset($_FILES['file']) && is_uploaded_file($_FILES['file']['tmp_name'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_FILES['file'])) {
+        $file = $_FILES['file'];
+        // Upload the image to Filestack
+        $response = $client->upload(['files' => fopen($_FILES['file']['tmp_name'], 'r')]);
+        // Get the Filestack URL of the uploaded image
+        $image_url = $response->url;
+        echo "File uploaded successfully. URL: $image_url";
+    }
     
-    // Upload the image to Filestack
-    $response = $client->upload(['files' => fopen($_FILES['file']['tmp_name'], 'r')]);
-    
-    // Get the Filestack URL of the uploaded image
-    $image_url = $response->url;
 } else {
     echo "Error: file was not uploaded";
 }
