@@ -43,13 +43,13 @@ if (mysqli_num_rows($result) == 0) {
 
         // Checking if `image_path` is `NULL` and setting the path to `default.jpg` if so
         if ($image == null) {
-            $image = 'default.jpg';
+            $image = 'img/default.jpg';
         }
         
         echo "<a href=\"index.php?content=showrecipe&id=$recipeid\">$title</a> submitted by $poster <br>\n";
         echo "$shortdesc<br><br>\n";
-        echo "<img src=\"img/$image\" width=\"200px\" alt=\"Hey\"><br><br>\n";
-        // echo "<img src=\"$image\" width=\"200px\" alt=\"Hey\"><br><br>\n";
+        // echo "<img src=\"img/$image\" width=\"200px\" alt=\"Hey\"><br><br>\n";
+        echo "<img src=\"$image\" width=\"200px\" alt=\"Hey\"><br><br>\n";
         // var_dump($image);
     }
 }
