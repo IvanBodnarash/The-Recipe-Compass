@@ -40,26 +40,30 @@ $shortdesc = $_POST['shortdesc'];
 $ingredients = $_POST['ingredients'];
 $directions = $_POST['directions'];
 
-$imageUrl = $_POST['image_url'];
 
 
 // File upload processing
-
-$data = $conn->prepare("INSERT INTO recipes (title, poster, shortdesc, ingredients, directions, image_path) VALUES (?, ?, ?, ?, ?, ?)");
-$data->bind_param("ssssss", $title, $poster, $shortdesc, $ingredients, $directions, $imageUrl);
-// $data->execute();
-
-if ($data->execute()) {
-    // Execute the query
-    echo "<h2>Recipe posted</h2>\n";
+if (isset($_POST['image_url'])) {
+    $imageUrl = $_POST['image_url'];
+    $data = $conn->prepare("INSERT INTO recipes (title, poster, shortdesc, ingredients, directions, image_path) VALUES (?, ?, ?, ?, ?, ?)");
+    $data->bind_param("ssssss", $title, $poster, $shortdesc, $ingredients, $directions, $imageUrl);
+    // $data->execute();
     
-    echo "<script>
-    setTimeout(function() {
-        window.location.href = 'index.php';
-    }, 3000);
-    </script>";
+    if ($data->execute()) {
+        // Execute the query
+        echo "<h2>Recipe posted</h2>\n";
+        
+        echo "<script>
+        setTimeout(function() {
+            window.location.href = 'index.php';
+        }, 3000);
+        </script>";
+    } else {
+        echo "Error: file was not uploaded";
+    }
 } else {
-    echo "Error: file was not uploaded";
+    // Handle the case when no image URL is provided
+    echo "Error: Image URL is missing";
 }
 
 // // Initialize Filestack
