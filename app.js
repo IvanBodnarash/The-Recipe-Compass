@@ -13,6 +13,7 @@ imageInput.addEventListener('click', () => {
 
             // Set URL as "image_url" field value
             document.getElementById('image-url').value = imageUrl;
+            console.log('URL завантаженого зображення:', imageUrl);
         }
     }).open();
 });
