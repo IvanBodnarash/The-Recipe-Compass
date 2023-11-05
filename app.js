@@ -1,6 +1,6 @@
 // Initializing Filestack with API key
 const client = filestack.init('AwxQNt5QZCr9LcJtnxGBQz');
-const imageInput = document.getElementById('upload-button');
+const imageInput = document.getElementById('filestack-picker');
 
 // Attaching an image upload event
 imageInput.addEventListener('click', () => {
