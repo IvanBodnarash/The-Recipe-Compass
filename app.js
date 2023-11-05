@@ -21,7 +21,7 @@
 const client = filestack.init('AwxQNt5QZCr9LcJtnxGBQz');
 
 // const image = document.getElementById('imageElement');
-const fileInput = document.getElementById('upload-button');
+const fileInput = document.getElementById('filestack-picker');
 
 fileInput.addEventListener("click", (e) => {
     const file = e.target.files[0];
