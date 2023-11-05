@@ -1,22 +1,17 @@
-// document.addEventListener('DOMContentLoaded', function () {
-//     const client = filestack.init('AwxQNt5QZCr9LcJtnxGBQz');
+// Initializing Filestack with API key
+const client = filestack.init('AwxQNt5QZCr9LcJtnxGBQz');
 
-//     document.getElementById('upload-button').addEventListener('clcik', function () {
-//         client.pick({
-//             accept: 'image/*',
-//             maxFiles: 1,
-//             transformations: {
-//                 crop: {
-//                     aspectRatio: 1
-//                 }
-//             }
-//         }).then(function (response) {
-//             const image_url = response.filesUploaded[0].url;
-//             document.getElementById('image-url').value = image_url;
-//         }).catch(function (error) {
-//             console.error('Image upload error:', error);
-//         });
-//     });
+// Attaching an image upload event
+document.getElementById('upload-button').addEventListener('click', () => {
+    // Image uploading via Filestack
+    client.pick({
+        accept: 'image/*',
+        onUploadDone: (result) => {
+            // Get URL of uploaded image
+            const imageUrl = result.filesUploaded[0].url;
 
-//     document.getElementById('image')
-// });
+            // Set URL as "image_url" field value
+            document.getElementById('image-url').value = imageUrl;
+        }
+    });
+});

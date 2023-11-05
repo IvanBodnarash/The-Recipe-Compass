@@ -40,41 +40,62 @@ $shortdesc = $_POST['shortdesc'];
 $ingredients = $_POST['ingredients'];
 $directions = $_POST['directions'];
 
+$image_url = $_POST['image_url'];
+
 
 // File upload processing
 
-// Initialize Filestack
-use Filestack\FilestackClient;
+$data = $conn->prepare("INSERT INTO recipes (title, poster, shortdesc, ingredients, directions, image_path) VALUES (?, ?, ?, ?, ?, ?)");
+$data->bind_param("ssssss", $title, $poster, $shortdesc, $ingredients, $directions, $image_url);
+// $data->execute();
 
-// $client = new FilestackClient($filestack_api_key);
-$client = new FilestackClient('AwxQNt5QZCr9LcJtnxGBQz');
-
-if (!empty($_FILES['file'])) {
-    $file = $_FILES['file'];
-
-    // Upload the image to Filestack
-    $response = $client->upload($file['tmp_name']);
-
-    // Get the Filestack URL of the uploaded image
-    $image_url = $response->getUrl();
-    echo "File uploaded successfully. URL: $image_url";
-
-    $data = $conn->prepare("INSERT INTO recipes (title, poster, shortdesc, ingredients, directions, image_path) VALUES (?, ?, ?, ?, ?, ?)");
-    $data->bind_param("ssssss", $title, $poster, $shortdesc, $ingredients, $directions, $image_url);
-    $data->execute();
-    $data->close();
-
+if ($data->execute()) {
     // Execute the query
     echo "<h2>Recipe posted</h2>\n";
-
+    
     echo "<script>
-                setTimeout(function() {
-                    window.location.href = 'index.php';
-                }, 3000);
-            </script>";
+    setTimeout(function() {
+        window.location.href = 'index.php';
+    }, 3000);
+    </script>";
 } else {
     echo "Error: file was not uploaded";
 }
+
+// // Initialize Filestack
+
+$data->close();
+$conn->close();
+// use Filestack\FilestackClient;
+
+// $client = new FilestackClient($filestack_api_key);
+
+// if (!empty($_FILES['file'])) {
+//     $file = $_FILES['file'];
+
+//     // Upload the image to Filestack
+//     $response = $client->upload($file);
+
+//     // Get the Filestack URL of the uploaded image
+//     $image_url = $response->getUrl();
+//     echo "File uploaded successfully. URL: $image_url";
+
+//     $data = $conn->prepare("INSERT INTO recipes (title, poster, shortdesc, ingredients, directions, image_path) VALUES (?, ?, ?, ?, ?, ?)");
+//     $data->bind_param("ssssss", $title, $poster, $shortdesc, $ingredients, $directions, $image_url);
+//     $data->execute();
+//     $data->close();
+
+//     // Execute the query
+//     echo "<h2>Recipe posted</h2>\n";
+
+//     echo "<script>
+//                 setTimeout(function() {
+//                     window.location.href = 'index.php';
+//                 }, 3000);
+//             </script>";
+// } else {
+//     echo "Error: file was not uploaded";
+// }
 
 
 // if (!empty($_FILES['file'])) {
@@ -107,8 +128,7 @@ if (!empty($_FILES['file'])) {
 // } else {
 //     echo "<h2>Sorry, there was a problem posting your recipe</h2>";
 //     echo "<p>Error: " . $data->error . "</p>";
-// }
-$conn->close();
+// }$conn->close();
 
 
 // $query = "INSERT INTO recipes (title, poster, shortdesc, ingredients, directions, image_path) VALUES (?, ?, ?, ?, ?)";

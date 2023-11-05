@@ -15,13 +15,12 @@
 
     <h3>Recipe Image</h3>
 
-    <!-- <div id="filestack-picker">
+    <div id="filestack-picker">
         <button type="button" id="upload-button">Upload Image</button>
         <input type="hidden" name="image_url" id="image-url">
-    </div> -->
+    </div>
 
     <!-- <input type="file" name="file" accept="image/*"><br> -->
-    <input type="file" name="file" accept="image/*"><br>
 
     <input type="submit" value="submit">
     <input type="hidden" name="content" value="newrecipe">
