@@ -17,8 +17,8 @@
     <h3>Recipe Image</h3>
 
     <div id="filestack-picker">
-        <input type="button" id="upload-button">Upload Image</input>
-        <input type="hidden" name="image_url" id="image-url">
+        <input type="file" id="upload-button">Upload Image</input>
+        <!-- <input type="hidden" name="image_url" id="image-url"> -->
     </div>
 
     <!-- <input type="file" name="file" accept="image/*"><br> -->
