@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="app.js"></script>
 </head>
 <body>
     <form action="addrecipe.inc.php" method="post" enctype="multipart/form-data">
@@ -33,6 +34,5 @@
         <input type="submit" value="submit">
         <input type="hidden" name="content" value="newrecipe">
     </form>
-    <script src="app.js"></script>
 </body>
 </html>
