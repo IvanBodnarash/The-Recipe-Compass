@@ -40,13 +40,13 @@ $shortdesc = $_POST['shortdesc'];
 $ingredients = $_POST['ingredients'];
 $directions = $_POST['directions'];
 
-$image_url = $_POST['image_url'];
+$imageUrl = $_POST['image_url'];
 
 
 // File upload processing
 
 $data = $conn->prepare("INSERT INTO recipes (title, poster, shortdesc, ingredients, directions, image_path) VALUES (?, ?, ?, ?, ?, ?)");
-$data->bind_param("ssssss", $title, $poster, $shortdesc, $ingredients, $directions, $image_url);
+$data->bind_param("ssssss", $title, $poster, $shortdesc, $ingredients, $directions, $imageUrl);
 // $data->execute();
 
 if ($data->execute()) {

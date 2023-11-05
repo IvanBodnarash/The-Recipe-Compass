@@ -1,17 +1,18 @@
 // Initializing Filestack with API key
 const client = filestack.init('AwxQNt5QZCr9LcJtnxGBQz');
+const imageInput = document.getElementById('filestack-picker');
 
 // Attaching an image upload event
-document.getElementById('upload-button').addEventListener('click', () => {
+imageInput.addEventListener('click', () => {
     // Image uploading via Filestack
-    client.pick({
+    client.picker({
         accept: 'image/*',
-        onUploadDone: (result) => {
+        onUploadDone: (file) => {
             // Get URL of uploaded image
-            const imageUrl = result.filesUploaded[0].url;
+            const imageUrl = file.url;
 
             // Set URL as "image_url" field value
             document.getElementById('image-url').value = imageUrl;
         }
-    });
+    }).open();
 });
