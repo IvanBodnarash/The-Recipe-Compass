@@ -1,15 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    <h1>Filestack test</h1>
-    <input type="file" id="fileInput">
+    <form action="phpscript.php" method="post" enctype="multipart/form-data">
+        <h1>Filestack test</h1>
+        <input type="file" id="fileInput" value="Upload Image">
+        <input type="hidden" name="image_url" id="image-url">
+        <!-- <img src="" alt="image" id="imageElement"> -->
+    </form>
+    <input type="button" id="showImg" value="Show Image"></input>
     <img src="" alt="image" id="imageElement">
+    <p id="urlParagraph"></p>
     <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>
