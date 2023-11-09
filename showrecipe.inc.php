@@ -52,7 +52,7 @@ $directions = nl2br($directions);
 
 // Checking if `image_path` is `NULL` and setting the path to `default.jpg` if so
 if ($image == null) {
-    $image = 'default.jpg';
+    $image = 'img/default.jpg';
 }
 
 echo "<h2>$title</h2>";
@@ -65,7 +65,7 @@ echo "$ingredients <br><br>\n";
 echo "<h3>Directions:</h3>\n";
 echo "$directions <br><br>\n";
 
-echo "<img src=\"img/$image\" width=\"200px\" alt=\"Hey\"><br><br>\n";
+echo "<img src=\"$image\" width=\"200px\" alt=\"Hey\"><br><br>\n";
 
 echo "<br><br>\n";
 
