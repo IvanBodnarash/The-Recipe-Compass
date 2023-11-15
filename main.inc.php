@@ -1,4 +1,4 @@
-<h2>The Latest Recipes</h2><br>
+<!-- <h2>The Latest Recipes</h2><br> -->
 
 <?php
 require 'config.php';
@@ -22,7 +22,7 @@ if ($conn->connect_error) {
 
 // mysqli_select_db("recipe", $con) or die ('Sorry, could not connect to database');
 
-$query = "SELECT recipeid, poster, title, shortdesc FROM recipes ORDER BY recipeid DESC LIMIT 0,5";
+$query = "SELECT recipeid, poster, title, shortdesc, image_path FROM recipes ORDER BY recipeid DESC LIMIT 0,6";
 
 $result = $conn->query($query);
 
@@ -36,9 +36,32 @@ if (mysqli_num_rows($result) == 0) {
         $poster = $row['poster'];
         $title = $row['title'];
         $shortdesc = $row['shortdesc'];
+        $image = $row['image_path'];
 
-        echo "<a href=\"index.php?content=showrecipe&id=$recipeid\">$title</a> submitted by $poster <br>\n";
-        echo "$shortdesc<br><br>\n";
+        // Checking if `image_path` is `NULL` and setting the path to `default.jpg` if so
+        if ($image == null) {
+            $image = 'img/default.jpg';
+        }
+
+        echo "<div class=\"recipe-block\"\n>
+                <a href=\"index.php?content=showrecipe&id=$recipeid\">
+                <div class=\"overlay\">
+                    <p>Open</p>
+                </div>
+                    <h3 class=\"blur-fx\">$title</h3>
+                    <img src=\"$image\" alt=\"Hey\" class=\"blur-fx\">\n
+                    <div class=\"text-block blur-fx\">
+                        <span class=\"blur-fx\">$shortdesc ...</span>
+                        <div class=\"text-inner-block blur-fx\">
+                            <hr>
+                            <div class=\"text-inner\" style=\"display: flex;\">
+                                <p>Posted by</p>
+                                <span>&nbsp;$poster</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>\n
+            </div>";
     }
 }
 

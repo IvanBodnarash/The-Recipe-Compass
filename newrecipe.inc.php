@@ -1,3 +1,11 @@
+<?php
+// Auth check
+// session_start();
+if (!isset($_SESSION['valid_recipe_user'])) {
+    header("Location: login.inc.php");
+    exit();
+}
+?>
 
 <form action="addrecipe.inc.php" method="post" enctype="multipart/form-data">
     <h2>Enter your new recipe</h2><br>

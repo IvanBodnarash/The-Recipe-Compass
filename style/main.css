@@ -1,0 +1,372 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Varela Round', sans-serif;
+}
+
+/* DESKTOP */
+
+/* HEADER */
+
+.main-nav {
+    position: relative;
+    z-index: 15;
+}
+
+.navbar {
+    text-decoration: none;
+    background-color: rgb(237, 249, 237);
+    /* background-color: #fff; */
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 100px;
+    align-items: center;
+}
+
+.navbar-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.navbar-nav a {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: rgb(69, 69, 69);
+}
+
+.navbar a:hover {
+    color: #618264
+}
+
+.nav-item {
+    list-style-type: none;
+    padding-left: 25px;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand img {
+    height: 60px;
+    width: 60px;
+}
+
+.brand-text {
+    font-family: 'Pacifico', cursive;
+    font-size: 25px;
+}
+
+/* HOME SECTION */
+
+.bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #313131;
+    opacity: 0.5;
+}
+
+.search-container {
+    background-image: url(../img/home-search-section-img.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background-position: center center; */
+    text-align: center;
+    padding: 190px 0 190px 0;
+    color: #ecf4eb;
+    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+}
+
+.search-container h1 {
+    font-size: 38px;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+}
+
+.search-container p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.input-container {
+    background-color: rgba(245, 245, 245, 0.3);
+    padding: 15px;
+    position: relative;
+    margin: auto;
+    width: fit-content;
+    border-radius: 5px;
+}
+
+.search-input {
+    height: 38px;
+    width: 350px;
+    padding-left: 15px;
+    border-radius: 5px;
+    border: none;
+}
+
+.search-input:focus {
+    outline: none;
+}
+
+.input-container button {
+    border-radius: 5px;
+    margin-left: 5px;
+    border: none;
+    color: white;
+    height: 38px;
+    width: 100px;
+    background-color: #79AC78;
+}
+
+.input-container button:hover {
+    background-color: #618264;
+}
+
+/* FEATURE BLOCK */
+
+.feature-block {
+    margin: 70px 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.feature-item {
+    margin: 15px;
+    border: 1px solid #b4b4b4;
+    padding: 40px 40px 30px 40px;
+    border-radius: 8px;
+    width: 20%;
+    height: 100%;
+    text-align: center;
+}
+
+.icon {
+    font-size: 50px;
+    text-align: center;
+    margin-bottom: 20px;
+    /* font-weight: 500; */
+}
+
+.text h3 {
+    margin-bottom: 10px;
+    color: #3d3f3d;
+}
+
+.text p {
+    color: #476147;
+    line-height: 1.4;
+}
+
+.feature-desc {
+    text-align: center;
+    padding-bottom: 50px;
+}
+
+.feature-desc h2 {
+    color: #555855;
+    font-size: 32px;
+    /* text-align: center; */
+    margin: 15px 0;
+}
+
+.feature-desc p {
+    color: #627662;
+    font-size: 22px;
+    /* text-align: center; */
+    margin: 25px auto;
+    line-height: 1.4;
+    width: 75%;
+}
+
+/* LATEST RECIPES */
+
+.latest-recipes-section {
+    background-color: #618264;
+    /* height: 500px; */
+}
+
+.latest-recipes-section h1 {
+    text-align: center;
+    padding-top: 70px;
+    color: #f2f7f3;
+    font-size: 34px;
+}
+
+.latest-recipes-section .description {
+    text-align: center;
+    padding: 25px 0 25px 0;
+    color: #D0E7D2;
+    font-size: 20px;
+    width: 75%;
+    margin: auto;
+}
+
+.recipe-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.recipe-block {
+    position: relative;
+    width: 30%;
+    height: 440px;
+    /* border: 1px solid #b4b4b4; */
+    border-radius: 8px;
+    /* padding: 10px; */
+    margin: 15px;
+    overflow: hidden;
+    background-color: #D0E7D2;
+    transition: transform 0.3s ease;
+}
+
+.recipe-block:hover {
+    /* filter: blur(5px); */
+    transform: scale(1.03);
+    box-shadow: -1px 4px 12px 0px rgba(0, 0, 0, 0.84);
+    transition: transform 0.3s ease;
+}
+
+/* .recipe-block:hover .blur-fx {
+    filter: blur(0);
+} */
+
+.blur-fx {
+    transition: filter 0.3s ease;  /* Додайте transition для всіх дочірніх елементів, які повинні реагувати на фільтр */
+}
+
+.blur-fx:hover {
+    filter: blur(5px);
+}
+
+.text-block hr {
+    border: none;
+    height: 1px;
+    background-color: #79AC78;
+    margin: 10px 0 10px 0;
+}
+
+.recipe-block img {
+    /* border-radius: 8px 8px 0 0; */
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.recipe-block .text-block {
+    padding: 15px;
+}
+
+.recipe-block h3 {
+    padding: 15px;
+    color: #394a3b;
+}
+
+.recipe-block a {
+    text-decoration: none;
+}
+
+.recipe-block a:hover {
+    color: #79AC78;
+    text-decoration: none;
+}
+
+/* .blur-fx {
+
+}
+
+.blur-fx:hover {
+
+} */
+
+.recipe-block .text-block span {
+    color: #455e44;
+}
+
+.text-inner-block {
+    position: absolute;
+    width: 90%;
+    bottom: 15px;
+}
+
+.text-inner span {
+    color: #618264;
+}
+
+.text-inner p {
+    color: #88a68b;
+}
+
+.show-all-recipes-block {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    display: flex;
+}
+
+.show-all-recipes-btn {
+    border-radius: 5px;
+    border: none;
+    height: 45px;
+    width: 200px;
+    background-color: #B0D9B1;
+    margin: 15px auto;
+    text-align: center;
+}
+
+.show-all-recipes-btn a {
+    color: white;
+    text-decoration: none;
+    font-size: 22px;
+    padding: 15px;
+}
+
+.overlay {
+    border-radius: 5px;
+    position: absolute;
+    z-index: 4;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.69);
+    display: flex;
+    opacity: 0;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 28px;
+    transition: height 0.2s ease-in-out, opacity 0.2s ease-in-out;
+}
+
+.recipe-block:hover .overlay {
+    /* transition: height 0.2s ease-in-out; */
+    height: 100%;
+    opacity: 1;
+    cursor: pointer;
+}
+
+.recipe-block:not(:hover) .overlay {
+    height: 0;
+    opacity: 0;
+}
