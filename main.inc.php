@@ -45,21 +45,23 @@ if (mysqli_num_rows($result) == 0) {
 
         echo "<div class=\"recipe-block\"\n>
                 <a href=\"index.php?content=showrecipe&id=$recipeid\">
-                <div class=\"overlay\">
-                    <p>Open</p>
-                </div>
-                    <h3 class=\"blur-fx\">$title</h3>
-                    <img src=\"$image\" alt=\"Hey\" class=\"blur-fx\">\n
-                    <div class=\"text-block blur-fx\">
-                        <span class=\"blur-fx\">$shortdesc ...</span>
-                        <div class=\"text-inner-block blur-fx\">
-                            <hr>
-                            <div class=\"text-inner\" style=\"display: flex;\">
-                                <p>Posted by</p>
-                                <span>&nbsp;$poster</span>
+                    <div class=\"overlay\">
+                        <p>Open</p>
+                    </div>
+                    <div class=\"content-wrapper\">
+                        <h3>$title</h3>
+                        <img src=\"$image\" alt=\"Recipe img\">\n
+                        <div class=\"text-block\">
+                            <span>$shortdesc ...</span>
+                            <div class=\"text-inner-block \">
+                                <hr>
+                                <div class=\"text-inner\" style=\"display: flex;\">
+                                    <p>Posted by</p>
+                                    <span>&nbsp;$poster</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </div>\n
                 </a>\n
             </div>";
     }

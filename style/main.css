@@ -69,7 +69,7 @@
 
 /* HOME SECTION */
 
-.bg {
+/* .bg {
     position: absolute;
     top: 0;
     left: 0;
@@ -77,7 +77,7 @@
     height: 100%;
     background: #313131;
     opacity: 0.5;
-}
+} */
 
 .search-container {
     background-image: url(../img/home-search-section-img.jpg);
@@ -113,11 +113,12 @@
 }
 
 .search-input {
-    height: 38px;
+    height: 42px;
     width: 350px;
     padding-left: 15px;
     border-radius: 5px;
     border: none;
+    font-size: 16px;
 }
 
 .search-input:focus {
@@ -129,13 +130,20 @@
     margin-left: 5px;
     border: none;
     color: white;
-    height: 38px;
-    width: 100px;
+    height: 42px;
+    width: 120px;
+    font-size: 16px;
     background-color: #79AC78;
+    transition: background-color 0.3s ease, top 0.1s ease;
 }
 
 .input-container button:hover {
     background-color: #618264;
+    cursor: pointer;
+}
+
+.input-container button:active {
+    top: 2px;
 }
 
 /* FEATURE BLOCK */
@@ -228,6 +236,8 @@
 }
 
 .recipe-block {
+    display: flex;
+    flex-direction: column;
     position: relative;
     width: 30%;
     height: 440px;
@@ -247,16 +257,8 @@
     transition: transform 0.3s ease;
 }
 
-/* .recipe-block:hover .blur-fx {
-    filter: blur(0);
-} */
-
-.blur-fx {
-    transition: filter 0.3s ease;  /* Додайте transition для всіх дочірніх елементів, які повинні реагувати на фільтр */
-}
-
-.blur-fx:hover {
-    filter: blur(5px);
+.recipe-block:active {
+    transform: scale(0.99);
 }
 
 .text-block hr {
@@ -279,6 +281,7 @@
 }
 
 .recipe-block h3 {
+    font-size: 20px;
     padding: 15px;
     color: #394a3b;
 }
@@ -287,10 +290,10 @@
     text-decoration: none;
 }
 
-.recipe-block a:hover {
+/* .recipe-block a:hover {
     color: #79AC78;
     text-decoration: none;
-}
+} */
 
 /* .blur-fx {
 
@@ -305,9 +308,7 @@
 }
 
 .text-inner-block {
-    position: absolute;
     width: 90%;
-    bottom: 15px;
 }
 
 .text-inner span {
@@ -319,32 +320,48 @@
 }
 
 .show-all-recipes-block {
-    margin-top: 20px;
-    margin-bottom: 30px;
+    padding-top: 50px;
+    padding-bottom: 50px;
     display: flex;
 }
 
 .show-all-recipes-btn {
-    border-radius: 5px;
+    border-radius: 10px;
     border: none;
-    height: 45px;
-    width: 200px;
+    /* height: 50px; */
+    width: 250px;
     background-color: #B0D9B1;
     margin: 15px auto;
     text-align: center;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.show-all-recipes-btn a {
-    color: white;
+.show-all-recipes-btn:hover {
+    background-color: #80aa7f;
+    box-shadow: 1px 4px 5px 0px #00000068;
+    cursor: pointer;
+}
+
+.show-all-recipes-btn:hover {
+    color: #D0E7D2;
+}
+
+.show-all-recipes-btn:active {
+    transform: scale(0.99);
+    box-shadow: none;
+}
+
+.show-all-recipes-btn {
+    color: #4d624e;
     text-decoration: none;
-    font-size: 22px;
+    font-size: 24px;
     padding: 15px;
 }
 
 .overlay {
     border-radius: 5px;
     position: absolute;
-    z-index: 4;
+    z-index: 5;
     top: 0;
     left: 0;
     width: 100%;
@@ -360,13 +377,22 @@
 }
 
 .recipe-block:hover .overlay {
-    /* transition: height 0.2s ease-in-out; */
     height: 100%;
     opacity: 1;
     cursor: pointer;
 }
 
-.recipe-block:not(:hover) .overlay {
-    height: 0;
-    opacity: 0;
+.content-wrapper {
+    position: relative;
+    z-index: 1;
+    filter: blur(0);
+    transition: filter 0.3s ease;
+}
+
+.recipe-block:hover .content-wrapper {
+    filter: blur(5px);
+}
+
+.recipe-block:hover .content-wrapper img {
+    scale: (1.5);
 }

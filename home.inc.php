@@ -64,7 +64,7 @@
             ?>
         </div>
         <div class="show-all-recipes-block">
-            <button class="show-all-recipes-btn"><a href="index.php?content=recipes">All Recipes</a></button>
+            <a href="index.php?content=recipes" class="show-all-recipes-btn">All Recipes</a>
         </div>
     </div>
 </main>
