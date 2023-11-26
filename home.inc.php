@@ -63,8 +63,29 @@
             include('main.inc.php');
             ?>
         </div>
-        <div class="show-all-recipes-block">
-            <a href="index.php?content=recipes" class="show-all-recipes-btn">All Recipes</a>
+        <div class="latest-recipe-btn-block">
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur, exercitationem labore doloremque error omnis cumque blanditiis corporis eaque magnam voluptatem, aliquam nemo ab molestias! Minima.</p>
+            <hr class="hr-latest-recipes">
+            <h1>Click on the button to see all the recipes</h1>
+            <div class="show-all-recipes-block">
+                <a href="index.php?content=recipes" class="show-all-recipes-btn">All Recipes</a>
+            </div>
+            <hr class="hr-latest-recipes">
+        </div>
+    </div>
+
+    <div class="newsletter-block">
+        <div class="newsletter-text">
+            <h2>Newsletter</h2>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus, soluta. Quo saepe earum placeat molestias. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore facilis dolorem tenetur nihil dolor cupiditate</p>
+        </div>
+        <div class="newsletter-button">
+            <form action="newsletter.inc.php" method="post" class="form-newsletter">
+                <div class="textbox-container">
+                    <input type="email" placeholder="Email Address" name="subs-email" require>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
         </div>
     </div>
 </main>

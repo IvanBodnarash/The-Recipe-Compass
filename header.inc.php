@@ -1,21 +1,15 @@
-<!-- <h1>
-    <br>
-    The Recipe Compass
-</h1> -->
-
-<!-- <h4>
-<em> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Just like mom use to make"</em>
-</h4> -->
-
 <div class="navbar-area" id="stickymenu">
     <div class="main-nav">
         <div class="nav-container">
             <nav class="navbar">
-                <a data-goto=".page__section_home" href="" class="navbar-brand">
-                    <img src="img/brand-logo.png" alt="logo">
+                <a data-goto=".page__section_home" href="index.php" class="navbar-brand">
+                    <img src="img/brand-logo-grey.png" alt="logo">
                     <span class="brand-text">The Recipe Compass</span>
                 </a>
                 <div class="navbar-collapse">
+                    <div class="menu-icon">
+                        <span></span>
+                    </div>
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a href="index.php" class="nav-link">Home</a>
