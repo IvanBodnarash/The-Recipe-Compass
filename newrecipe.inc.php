@@ -2,7 +2,7 @@
 // Auth check
 // session_start();
 if (!isset($_SESSION['valid_recipe_user'])) {
-    header("Location: login.inc.php");
+    header("Location: index.php?content=login");
     exit();
 }
 ?>

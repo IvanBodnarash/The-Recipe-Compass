@@ -35,11 +35,17 @@ $whereClause = implode(" OR ", $conditions);
 $query = "SELECT recipeid, title, shortdesc FROM recipes WHERE $whereClause";
 $result = $conn->query($query);
 
-echo "<h1>Search Results</h1>\n";
-
 if (mysqli_num_rows($result) == 0) {
-    echo "<h2>Sorry, no recipes were found with '$search' in them.</h2>";
+    echo "<div class=\"no-user-banner\">
+            <h1>Sorry, no recipes were found with '$search' in them</h1>
+            <div class=\"no-user-banner-inner\">
+                <a href=\"index.php\">Try again</a>
+            </div>
+        </div>\n";
+    // echo "<h2>Sorry, no recipes were found with '$search' in them.</h2>";
 } else {
+    echo "<h1>Search Results</h1>\n";
+    
     while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
         $recipeid = $row['recipeid'];
         $title = $row['title'];

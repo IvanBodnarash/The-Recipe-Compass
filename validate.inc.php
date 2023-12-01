@@ -21,9 +21,15 @@ session_start();
 
 // Connection check
 if ($conn->connect_error) {
-    echo "<h2>Sorry, we cannot process your request at this time, please try again later</h2>\n";
-    echo "<a href=\"index.php\">Return to Home</a>\n";
-    exit;
+    echo "<div class=\"no-user-banner\">
+            <h1>Sorry, we cannot process your request at this time, please try again later</h1>
+            <div class=\"no-user-banner-inner\">
+                <a href=\"index.php?content=login\">Try again</a>
+                <p>&ensp;/&ensp;</p>
+                <a href=\"index.php\">Home</a>
+            </div>
+        </div>\n";
+    // exit;
 }
 
 // Retrieving inserted data from form
@@ -39,39 +45,60 @@ $result = $stmt->get_result();
 $row = $result->fetch_assoc();
 
 if ($row === null) {
-    echo "<h2>Sorry, no user with this login was found.</h2><br>\n";
-    echo "<a href=\"index.php?content=login\">Try again</a><br>\n";
-    echo "<a href=\"index.php\">Return to Home</a>\n";
-    exit;
-}
-
-// Password check
-$hashed_password_from_db = $row['password'];
-if (password_verify($password, $hashed_password_from_db)) {
-    // The password is correct, the user is authorized
-    // session_start();
-    // $_SESSION['valid_recipe_user'] = $userid;
-    // $_SESSION['can_post_comments'] = true; // Set the user to be able to add comments
-
-    // Close the current session before changing cookie settings
-    session_write_close();
-
-    // Setting session for 10 days
-    session_set_cookie_params(10 * 24 * 60 * 60);
-
-    // We start the session again after changing the cookie parameters
-    // After succsessfull user authorization
-    session_start();
-    $_SESSION['valid_recipe_user'] = $userid;
-    $_SESSION['can_post_comments'] = true; // Set the user to be able to add comments
-
-    echo "<h2>Your user account has been validated, you can now post recipes and comments</h2><br>\n";
-    echo "<a href=\"index.php\">Return to Home</a>\n";
+    echo "<div class=\"no-user-banner\">
+            <h1>Sorry, no user with this login was found</h1>
+            <div class=\"no-user-banner-inner\">
+                <a href=\"index.php?content=login\">Try again</a>
+                <p>&ensp;/&ensp;</p>
+                <a href=\"index.php\">Home</a>
+            </div>
+        </div>\n";
+    // exit;
 } else {
-    // The password is incorrect
-    echo "<h2>Sorry, your password is incorrect.</h2><br>\n";
-    echo "<a href=\"index.php?content=login\">Try again</a><br>\n";
-    echo "<a href=\"index.php\">Return to Home</a>\n";
+    // Password check
+    $hashed_password_from_db = $row['password'];
+    if (password_verify($password, $hashed_password_from_db)) {
+        // The password is correct, the user is authorized
+        // session_start();
+        // $_SESSION['valid_recipe_user'] = $userid;
+        // $_SESSION['can_post_comments'] = true; // Set the user to be able to add comments
+    
+        // Close the current session before changing cookie settings
+        session_write_close();
+    
+        // Setting session for 10 days
+        session_set_cookie_params(10 * 24 * 60 * 60);
+    
+        // We start the session again after changing the cookie parameters
+        // After succsessfull user authorization
+        session_start();
+        $_SESSION['valid_recipe_user'] = $userid;
+        $_SESSION['can_post_comments'] = true; // Set the user to be able to add comments
+    
+        echo "<div class=\"validation-block-banner\">
+                <h1>Your user account has been authorized</h1>
+            </div>
+            <div class=\"validation-block\">
+                <h1>Now you can post recipes and comments</h1>
+                <p class=\"msg\">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel rem quisquam ducimus ullam a. Eius, et laudantium! Mollitia, harum esse sequi impedit natus omnis necessitatibus nihil aspernatur accusantium! Totam, fugit!</p>
+                <p class=\"msg-redirection\"><b>You will be automaticaly redirected to the home page</b></p>
+            </div>\n";
+        echo "<script>
+                setTimeout(function() {
+                    window.location.href = 'index.php';
+                }, 3000);
+            </script>";
+    } else {
+        // The password is incorrect
+        echo "<div class=\"no-user-banner\">
+                <h1>Sorry, your password is incorrect</h1>
+                <div class=\"no-user-banner-inner\">
+                    <a href=\"index.php?content=login\">Try again</a>
+                    <p>&ensp;/&ensp;</p>
+                    <a href=\"index.php\">Home</a>
+                </div>
+            </div>\n";
+    }
 }
 // $query = "SELECT userid from users where userid = '$userid' and password = PASSWORD('$password')";
 

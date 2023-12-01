@@ -74,3 +74,44 @@ document.addEventListener('DOMContentLoaded', function () {
         document.documentElement.scrollTop = 0;
     });
 });
+
+// Sort buttons toggle styles
+
+// function changeColor(event, sortBy) {
+//     // event.preventDefault();
+//     // Find all elements with 'selected' class and remove this class
+
+//     let buttons = document.querySelectorAll('.sort-block a');
+
+//     buttons.forEach(function (button) {
+//         button.classList.remove('selected');
+//     });
+
+//     let selectedButton = event.target;
+//     // Add class 'selected' to pressed button
+
+//     selectedButton.classList.add('selected');
+
+//     let currentURL = window.location.href;
+//     let urlParts = currentURL.split('?');
+
+//     let newURL = urlParts[0] + '?content=recipes&sort=' + sortBy;
+
+//     window.history.replaceState({}, document.title, newURL);
+
+//     loadRecipes(sortBy);
+// }
+
+// function loadRecipes(sortBy) {
+//     // Викликайте AJAX або оновлюйте вміст рецептів за новим сортуванням
+//     // Ви можете використовувати, наприклад, fetch або jQuery.ajax
+//     // Приклад з використанням fetch:
+//     fetch('index.php?sort=' + sortBy)
+//         .then(response => response.json())
+//         .then(data => {
+//             // Оновлюйте вміст рецептів в DOM за новим сортуванням
+//             // Наприклад, оновіть вміст .recipes-wrapper з новими рецептами
+//             document.querySelector('.recipes-wrapper').innerHTML = data.recipesHTML;
+//         })
+//         .catch(error => console.error('Error fetching recipes:', error));
+// }
