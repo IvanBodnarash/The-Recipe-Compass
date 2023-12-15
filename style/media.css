@@ -1214,16 +1214,13 @@
 
     .form-check {
         margin-top: 3px;
+        width: 100%;
     }
 
     .form-check label,
     .directions-list,
     .comments-info-section span {
         font-size: 12px;
-    }
-
-    .form-check {
-        width: 53%;
     }
 
     /* COMMENTS */
