@@ -179,7 +179,13 @@ function displayFileName() {
     let fileNameDisplay = document.getElementById('file-name');
     
     if (fileInput.files.length > 0) {
-        fileNameDisplay.textContent = fileInput.files[0].name;
+        let fileName = fileInput.files[0].name;
+
+        if (fileName.length > 25) {
+            fileName = fileName.substring(0, 22) + '...';
+        }
+
+        fileNameDisplay.textContent = fileName;
     } else {
         fileNameDisplay.textContent = '';
     }
