@@ -1510,12 +1510,12 @@
 
     .menu-icon {
         /* top: 30px; */
-        right: 20px;
+        right: 15px;
     }
 
     .nav-item a,
     .nav-item span h3 {
-        padding-right: 15px;
+        padding-right: 5px;
     }
 
     /* HOMEPAGE */
