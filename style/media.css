@@ -159,11 +159,11 @@
     }
 
     .form-check {
-        width: 55%;
+        width: 100%;
     }
 
     .form-check label {
-        line-height: 1.7;
+        line-height: 1.4;
     }
 
     /* COMMENTS-BLOCK */
