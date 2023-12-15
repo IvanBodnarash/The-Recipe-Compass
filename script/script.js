@@ -75,43 +75,112 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-// Sort buttons toggle styles
+// ADDING/REMOVING INGREDIENTS TO ARRAY AND ITS LOGIC
 
-// function changeColor(event, sortBy) {
-//     // event.preventDefault();
-//     // Find all elements with 'selected' class and remove this class
+function addIngredient() {
+    let container = document.querySelector('#ingredients-container');
 
-//     let buttons = document.querySelectorAll('.sort-block a');
+    let input = document.createElement('input');
+    input.name = 'ingredients[]';
+    input.type = 'text';
 
-//     buttons.forEach(function (button) {
-//         button.classList.remove('selected');
-//     });
+    let removeButton = document.createElement('button');
+    removeButton.type = 'button';
+    removeButton.innerHTML = 'Remove';
+    removeButton.onclick = function() {
+        removeIngredient(input, removeButton);
+    };
 
-//     let selectedButton = event.target;
-//     // Add class 'selected' to pressed button
+    let div = document.createElement('div');
+    div.classList.add('ingredient-item');
+    div.appendChild(input);
+    input.classList.add('input-field');
+    div.appendChild(removeButton);
 
-//     selectedButton.classList.add('selected');
+    container.appendChild(div);
+}
 
-//     let currentURL = window.location.href;
-//     let urlParts = currentURL.split('?');
+function removeIngredient(input, button) {
+    let container = document.querySelector('#ingredients-container');
+    container.removeChild(input.parentNode);
+}
 
-//     let newURL = urlParts[0] + '?content=recipes&sort=' + sortBy;
+// ADDING/REMOVING DIRECTIONS TO ARRAY AND ITS LOGIC
 
-//     window.history.replaceState({}, document.title, newURL);
+function addDirection() {
+    let container = document.querySelector('#directions-container');
 
-//     loadRecipes(sortBy);
-// }
+    let textarea = document.createElement('textarea');
+    textarea.name = 'directions[]';
 
-// function loadRecipes(sortBy) {
-//     // Викликайте AJAX або оновлюйте вміст рецептів за новим сортуванням
-//     // Ви можете використовувати, наприклад, fetch або jQuery.ajax
-//     // Приклад з використанням fetch:
-//     fetch('index.php?sort=' + sortBy)
-//         .then(response => response.json())
-//         .then(data => {
-//             // Оновлюйте вміст рецептів в DOM за новим сортуванням
-//             // Наприклад, оновіть вміст .recipes-wrapper з новими рецептами
-//             document.querySelector('.recipes-wrapper').innerHTML = data.recipesHTML;
-//         })
-//         .catch(error => console.error('Error fetching recipes:', error));
-// }
+    let removeButton = document.createElement('button');
+    removeButton.type = 'button';
+    removeButton.innerHTML = 'Remove';
+    removeButton.onclick = function() {
+        removeDirection(textarea, removeButton);
+    };
+
+    let div = document.createElement('div');
+    div.classList.add('direction-item');
+    div.appendChild(textarea);
+    textarea.classList.add('input-field');
+    div.appendChild(removeButton);
+
+    container.appendChild(div);
+}
+
+function removeDirection(textarea, button) {
+    let container = document.querySelector('#directions-container');
+    container.removeChild(textarea.parentNode);
+}
+
+// CHECKBOX STRIKETHROUGH
+
+function toggleStrikethrough(checkboxId) {
+    let labelId = "label_" + checkboxId;
+    let labelElement = document.getElementById(labelId);
+
+    if (labelElement.classList.contains("strikethrough")) {
+        labelElement.classList.remove("strikethrough");
+    } else {
+        labelElement.classList.add("strikethrough");
+    }
+}
+
+// COMMENT FORM SUBMIT
+
+document.querySelector('#commentForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    let formData = new FormData(this);
+
+    // Saving of current scroll position
+
+    let scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+    let xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            // Refreshing after sucessfull submit
+            window.location.reload();
+
+            window.scrollTo(0, scrollTop);
+        }
+    };
+
+    xhr.open('post', 'index.php', true);
+    xhr.send(formData);
+});
+
+// Upload file name
+
+function displayFileName() {
+    let fileInput = document.getElementById('upload-button');
+    let fileNameDisplay = document.getElementById('file-name');
+    
+    if (fileInput.files.length > 0) {
+        fileNameDisplay.textContent = fileInput.files[0].name;
+    } else {
+        fileNameDisplay.textContent = '';
+    }
+}

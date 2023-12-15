@@ -11,6 +11,6 @@ require 'config.php';
         <div class="textbox-container">
             <input type="email" placeholder="Email Address" name="subs-email" require>
         </div>
-        <button type="submit">Submit</button>
+        <button type="button">Submit</button>
     </form>
 </div>

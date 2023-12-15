@@ -5,9 +5,14 @@ require 'vendor/autoload.php';
 // Auth check
 session_start();
 if (!isset($_SESSION['valid_recipe_user'])) {
-    echo "<h2>Sorry, you must be logged in to post a recipe</h2>\n";
-    echo "<a href=\"index.php?content=login\">Log In</a><br>\n";
-    echo "<a href=\"index.php\">Return to Home</a>\n";
+    echo "<div class=\"no-user-banner\">
+            <h1>Sorry, you must be logged in to post a recipe</h1>
+            <div class=\"no-user-banner-inner\">
+                <a href=\"index.php?content=login\">Try again</a>
+                <p>&ensp;/&ensp;</p>
+                <a href=\"index.php\">Home</a>
+            </div>
+        </div>\n";
     exit;
 }
 
@@ -23,8 +28,12 @@ if (!isset($_SESSION['valid_recipe_user'])) {
 // $conn = new mysqli($servername, $username, $password, $dbname);
 
 if ($conn->connect_error) {
-    echo "<h2>Sorry, we cannot process your request at this time, please try again later</h2>\n";
-    echo "<a href=\"index.php\">Return to Home</a>\n";
+    echo "<div class=\"no-user-banner\">
+            <h1>Sorry, we cannot process your request at this time, please try again later</h1>
+            <div class=\"no-user-banner-inner\">
+                <a href=\"index.php\">Home</a>
+            </div>
+        </div>\n";
     exit;
 }
 
@@ -40,23 +49,30 @@ $shortdesc = $_POST['shortdesc'];
 $ingredients = $_POST['ingredients'];
 $directions = $_POST['directions'];
 
+$ingredientsString = serialize($ingredients);
+$directionsString = serialize($directions);
+
+$date = date("Y-m-d");
 
 
 // File upload processing
 if (isset($_POST['image_url'])) {
     $imageUrl = $_POST['image_url'];
-    $data = $conn->prepare("INSERT INTO recipes (title, poster, shortdesc, ingredients, directions, image_path) VALUES (?, ?, ?, ?, ?, ?)");
-    $data->bind_param("ssssss", $title, $poster, $shortdesc, $ingredients, $directions, $imageUrl);
+    $data = $conn->prepare("INSERT INTO recipes (title, poster, shortdesc, ingredients, directions, image_path, date) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $data->bind_param("sssssss", $title, $poster, $shortdesc, $ingredientsString, $directionsString, $imageUrl, $date);
     // $data->execute();
     
     if ($data->execute()) {
+        // Getting ID of new recipe
+        $recipeId = $data->insert_id;
+
         // Execute the query
-        echo "<h2>Recipe posted</h2>\n";
+        // echo "<h2>Recipe posted</h2>\n";
         
         echo "<script>
+        window.location.href = 'index.php?content=showrecipe&id=$recipeId';
         setTimeout(function() {
-            window.location.href = 'index.php';
-        }, 3000);
+        });
         </script>";
     } else {
         echo "Error: file was not uploaded";

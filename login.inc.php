@@ -29,10 +29,3 @@
         </div>
     </form>
 </div>
-
-
-<!-- <div class="newsletter-block">
-    <?php
-    include('newsletter.inc.php');
-    ?>
-</div> -->

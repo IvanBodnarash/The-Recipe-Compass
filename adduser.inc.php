@@ -12,8 +12,12 @@ require 'config.php';
 // $conn = new mysqli($servername, $username, $password, $dbname);
 
 if ($conn->connect_error) {
-    echo "<h2>Sorry, we cannot process your request at this time, please try again later</h2>\n";
-    echo "<a href=\"index.php\">Return to Home</a>\n";
+    echo "<div class=\"no-user-banner\">
+            <h1>Sorry, we cannot process your request at this time, please try again later</h1>
+            <div class=\"no-user-banner-inner\">
+                <a href=\"index.php\">Home</a>
+            </div>
+        </div>\n";
     exit;
 }
 
@@ -25,16 +29,28 @@ $fullname = $_POST['fullname'];
 $email = $_POST['email'];
 
 if (empty($userid) || empty($password) || empty($password2)) {
-    echo "<h2>Sorry, you must fill in all required fields.</h2><br>\n";
-    echo "<a href=\"index.php?content=register\">Try again</a><br>\n";
-    echo "<a href=\"index.php\">Return to Home</a>\n";
+    echo "<div class=\"no-user-banner\">
+            <h1>Sorry, you must fill in all required fields</h1>
+            <div class=\"no-user-banner-inner\">
+                <a href=\"index.php?content=register\">Try again</a>
+                <p>&ensp;/&ensp;</p>
+                <a href=\"index.php\">Home</a>
+            </div>
+        </div>\n";
+    include("footer.inc.php");
     exit;
 }
 
 if ($password != $password2) {
-    echo "<h2>Sorry, the passwords you entered did not match.</h2><br>\n";
-    echo "<a href=\"index.php?content=register\">Try again</a><br>\n";
-    echo "<a href=\"index.php\">Return to Home</a>\n";
+    echo "<div class=\"no-user-banner\">
+            <h1>Sorry, the passwords you entered did not match</h1>
+            <div class=\"no-user-banner-inner\">
+                <a href=\"index.php?content=register\">Try again</a>
+                <p>&ensp;/&ensp;</p>
+                <a href=\"index.php\">Home</a>
+            </div>
+        </div>\n";
+    include("footer.inc.php");
     exit;
 }
 
@@ -47,9 +63,15 @@ $result = $stmt->get_result();
 $row = $result->fetch_assoc();
 
 if ($row !== null && isset($row['userid']) && $row['userid'] == $userid) {
-    echo "<h2>Sorry, that user name is already taken.</h2><br>\n";
-    echo "<a href=\"index.php?content=register\">Try again</a><br>\n";
-    echo "<a href=\"index.php\">Return to Home</a>\n";
+    echo "<div class=\"no-user-banner\">
+        <h1>Sorry, that user name is already taken</h1>
+        <div class=\"no-user-banner-inner\">
+            <a href=\"index.php?content=register\">Try again</a>
+            <p>&ensp;/&ensp;</p>
+            <a href=\"index.php\">Home</a>
+        </div>
+    </div>\n";
+    include("footer.inc.php"); 
     exit;
 }
 
@@ -62,14 +84,36 @@ $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
 if ($stmt->execute()) {
     $_SESSION['valid_recipe_user'] = $userid;
-    echo "<h2>Your registration request has been approved, and you are now logged in!</h2>\n";
-    echo "<a href=\"index.php\">Return to Home</a>\n";
+    echo "<div class=\"no-user-banner\">
+            <h1>Your registration request has been approved, and you are now logged in!</h1>
+            <div class=\"no-user-banner-inner\">
+                <a href=\"index.php\">Home</a>
+            </div>
+        </div>\n";
+        include("footer.inc.php"); 
 } else {
-    echo "<h2>Sorry, there was a problem processing your registration request.</h2><br>\n";
-    echo "<a href=\"index.php?content=register\">Try again</a><br>\n";
-    echo "<a href=\"index.php\">Return to Home</a>\n";
+    echo "<div class=\"no-user-banner\">
+            <h1>Sorry, there was a problem processing your registration request</h1>
+            <div class=\"no-user-banner-inner\">
+                <a href=\"index.php?content=register\">Try again</a>
+                <p>&ensp;/&ensp;</p>
+                <a href=\"index.php\">Home</a>
+            </div>
+        </div>\n";
+        include("footer.inc.php"); 
 }
-
 $stmt->close();
 $conn->close();
 ?>
+
+
+<div class="newsletter-block">
+    <?php
+    include('newsletter.inc.php');
+    ?>
+</div>
+<div id="footer">
+    <?php
+    include("footer.inc.php");
+    ?>
+</div>

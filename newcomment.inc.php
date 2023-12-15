@@ -6,9 +6,17 @@ session_start();
 $recipeid = $_GET['id'];
 
 if (!isset($_SESSION['valid_recipe_user'])) {
-    echo "<h2>Sorry, you do not have permission to post comments</h2><br>\n";
-    echo "<a href=\"index.php?content=login\">Please login to post comments</a><br>\n";
-    echo "<a href=\"index.php?content=showrecipe&id=$recipeid\">Go back to recipe</a>\n";
+    // echo "<div class=\"no-user-banner\">
+    //         <h1>Sorry, you do not have permission to post comments</h1>
+    //         <div class=\"no-user-banner-inner\">
+    //             <a href=\"index.php?content=showrecipe&id=$recipeid\">Go back to recipe</a>
+    //             <p>&ensp;/&ensp;</p>
+    //             <a href=\"index.php?content=login\">Please login to post comments</a>
+    //         </div>
+    //     </div>\n";
+    // echo "<h2>Sorry, you do not have permission to post comments</h2><br>\n";
+    // echo "<a href=\"index.php?content=login\">Please login to post comments</a><br>\n";
+    // echo "<a href=\"index.php?content=showrecipe&id=$recipeid\">Go back to recipe</a>\n";
 } else {
     $userid = $_SESSION['valid_recipe_user'];
     echo "<form action=\"index.php\" method=\"post\">\n";

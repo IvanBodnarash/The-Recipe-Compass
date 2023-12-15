@@ -15,8 +15,14 @@ require 'config.php';
 
 // Connection check
 if ($conn->connect_error) {
-    echo "<h2>Sorry, we cannot process your request at this time, please try again later</h2>\n";
-    echo "<a href=\"index.php\">Return to Home</a>\n";
+    echo "<div class=\"no-user-banner\">
+            <h1>Sorry, we cannot process your request at this time, please try again later</h1>
+            <div class=\"no-user-banner-inner\">
+                <a href=\"index.php?content=login\">Try again</a>
+                <p>&ensp;/&ensp;</p>
+                <a href=\"index.php\">Home</a>
+            </div>
+        </div>\n";
     exit;
 }
 
@@ -29,13 +35,25 @@ $result = $conn->query($query);
 // $result = mysqli_query($con, $query) or die('Sorry, could not get recipes at this time');
 
 if (mysqli_num_rows($result) == 0) {
-    echo "<h3>Sorry, there are no recipes posted at this time, please try back later.</h3>";
+    echo "<div class=\"no-user-banner\">
+            <h1>Sorry, there are no recipes posted at this time, please try back later</h1>
+        </div>\n";
 } else {
     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
         $recipeid = $row['recipeid'];
         $poster = $row['poster'];
         $title = $row['title'];
         $shortdesc = $row['shortdesc'];
+
+        $maxLengthWords = 20;
+        $words = str_word_count($shortdesc, 1);
+
+        if (count($words) > $maxLengthWords) {
+            $words = array_slice($words, 0, $maxLengthWords);
+
+            $shortdesc = implode(' ', $words) . '...';
+        }
+
         $image = $row['image_path'];
 
         // Checking if `image_path` is `NULL` and setting the path to `default.jpg` if so
@@ -52,7 +70,7 @@ if (mysqli_num_rows($result) == 0) {
                         <h3>$title</h3>
                         <img src=\"$image\" alt=\"Recipe img\">\n
                         <div class=\"text-block\">
-                            <span>$shortdesc ...</span>
+                            <span>$shortdesc</span>
                             <div class=\"text-inner-block \">
                                 <hr>
                                 <div class=\"text-inner\" style=\"display: flex;\">

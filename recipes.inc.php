@@ -3,12 +3,14 @@
     <p class="description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur, dolorum! Incidunt at doloremque optio tenetur</p>
     <div class="sort-block-wrapper">
         <div class="sort-block">
-            <a href="index.php?content=recipes&sort=title">Sort by Title</a>
-            <a href="index.php?content=recipes&sort=poster">Sort by Poster</a>
+            <a href="index.php?content=recipes&sort=title&order=asc">Sort by Title</a>
+            <a href="index.php?content=recipes&sort=poster&order=asc">Sort by Poster</a>
+            <a href="index.php?content=recipes&sort=date&order=desc">Sort by Date</a>
         </div>
         <div class="sorted-by-block">
             <?php
-            $sort = isset($_GET['sort']) ? $_GET['sort'] : 'title';
+            $sort = isset($_GET['sort']) ? $_GET['sort'] : 'date';
+            $order = isset($_GET['order']) && $_GET['order'] === 'asc' ? 'asc' : 'desc';
 
             $sortText = '';
 
@@ -18,6 +20,9 @@
                     break;
                 case 'poster':
                     $sortText = 'Sorted by Poster';
+                    break;
+                case 'date':
+                    $sortText = 'Sorted by Date';
                     break;
                 default:
                     $sortText = 'Sorted by Alphabet';
@@ -43,31 +48,52 @@
         
         // Connection check
         if ($conn->connect_error) {
-            echo "<h2>Sorry, we cannot process your request at this time, please try again later</h2>\n";
-            echo "<a href=\"index.php\">Return to Home</a>\n";
+            echo "<div class=\"no-user-banner\">
+                    <h1>Sorry, we cannot process your request at this time, please try again later</h1>
+                    <div class=\"no-user-banner-inner\">
+                        <a href=\"index.php?content=login\">Login</a>
+                        <p>&ensp;/&ensp;</p>
+                        <a href=\"index.php\">Home</a>
+                    </div>
+                </div>\n";
             exit;
         }
 
         // mysqli_select_db("recipe", $con) or die ('Sorry, could not connect to database');
         
         // Defining the sort option (if set in the URL)
-        
-        $sort = isset($_GET['sort']) ? $_GET['sort'] : 'title';
+        $sortOptions = array('user' => 'poster', 'title' => 'title', 'date' => 'date');
+        $sort = isset($_GET['sort']) && isset($sortOptions[$_GET['sort']]) ? $sortOptions[$_GET['sort']] : 'date';
 
-        $query = "SELECT recipeid, poster, title, shortdesc, image_path FROM recipes ORDER BY $sort";
+        $query = "SELECT recipeid, poster, title, shortdesc, image_path, date FROM recipes ORDER BY $sort $order";
 
         $result = $conn->query($query);
 
         // $result = mysqli_query($con, $query) or die('Sorry, could not get recipes at this time');
         
         if (mysqli_num_rows($result) == 0) {
-            echo "<h3>Sorry, there are no recipes posted at this time, please try back later.</h3>";
+            echo "<div class=\"no-user-banner\">
+                    <h1>Sorry, there are no recipes posted at this time, please try back later</h1>
+                    <div class=\"no-user-banner-inner\">
+                        <a href=\"index.php\">Home</a>
+                    </div>
+                </div>\n";
         } else {
             while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                 $recipeid = $row['recipeid'];
                 $poster = $row['poster'];
                 $title = $row['title'];
                 $shortdesc = $row['shortdesc'];
+
+                $maxLengthWords = 20;
+                $words = str_word_count($shortdesc, 1);
+
+                if (count($words) > $maxLengthWords) {
+                    $words = array_slice($words, 0, $maxLengthWords);
+
+                    $shortdesc = implode(' ', $words) . '...';
+                }
+
                 $image = $row['image_path'];
 
                 //     echo "<div style=\"border: 2px solid black;\">
@@ -95,7 +121,7 @@
                                 <h3>$title</h3>
                                 <img src=\"$image\" alt=\"Recipe img\">\n
                                 <div class=\"text-block\">
-                                    <span>$shortdesc ...</span>
+                                    <span>$shortdesc</span>
                                     <div class=\"text-inner-block \">
                                         <hr>
                                         <div class=\"text-inner\" style=\"display: flex;\">
