@@ -1829,6 +1829,10 @@
 
     /* BANNERS */
 
+    .please-log-in {
+        font-size: 10px;
+    }
+
     .no-user-banner {
         padding: 8px;
     }
