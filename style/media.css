@@ -1830,16 +1830,16 @@
     /* BANNERS */
 
     .no-user-banner {
-        padding: 20px;
+        padding: 8px;
     }
 
     .no-user-banner h1 {
-        font-size: 20px;
+        font-size: 16px;
     }
 
     .no-user-banner-inner a,
     .no-user-banner-inner p {
-        font-size: 12px;
+        font-size: 10px;
     }
 
 }
