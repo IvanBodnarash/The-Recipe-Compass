@@ -23,7 +23,7 @@
             <input type="text" name="fullname" id="inputReg" require maxlength="30">
         
             <span id="loginTxt">E-mail address</span>
-            <input type="text" name="email" id="inputReg" require maxlength="20">
+            <input type="text" name="email" id="inputReg" require maxlength="50">
         
             <input type="submit" value="REGISTER" name="" id="registerBtn" require>
 
