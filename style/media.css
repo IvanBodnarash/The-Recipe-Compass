@@ -494,16 +494,6 @@
         padding: 15px 20px;
     }
 
-    /* .navbar-brand img {
-        height: 35px;
-        width: 35px;
-    }
-
-    .brand-text {
-        font-size: 16px;
-    } */
-
-
     .nav-item {
         padding-left: 15px;
     }
@@ -703,10 +693,7 @@
 
     /* NAVIGATION */
 
-    .nav-container {}
-
     .navbar-area {
-        /* position: fixed; */
         z-index: 10;
         width: 100%;
     }
@@ -727,7 +714,6 @@
     }
 
     .menu-icon {
-        /* top: 30px; */
         right: 25px;
         z-index: 5;
         display: block;
@@ -800,7 +786,6 @@
 
     ._active {
         transform: translate(0px, 0px);
-        /* left: 0; */
     }
 
     .nav-item a,
@@ -904,7 +889,6 @@
     }
 
     .show-all-recipes-block {
-        /* padding-top: 20px; */
         padding-bottom: 20px;
         display: flex;
     }
@@ -1084,7 +1068,6 @@
     .direction-item button,
     .custom-upload-button,
     .submit-btn {
-        /* width: 150px; */
         font-size: 12px;
     }
 
@@ -1100,7 +1083,6 @@
 
     .login-form-wrapper #userId,
     .login-form-wrapper #pass {
-        /* width: 100%; */
         height: 35px;
         font-size: 14px;
     }
@@ -1200,7 +1182,6 @@
     /* RECIPE PAGE */
 
     .img-recipe img {
-        /* width: 400px; */
         height: 250px;
     }
 
@@ -1577,7 +1558,6 @@
     }
 
     .menu-icon {
-        /* top: 30px; */
         right: 15px;
     }
 
@@ -1791,7 +1771,6 @@
 
     .comment-form textarea {
         width: 95%;
-        /* height: 40px; */
     }
 
     .comment-form textarea {

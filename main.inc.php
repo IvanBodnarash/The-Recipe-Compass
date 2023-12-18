@@ -1,19 +1,8 @@
-<!-- <h2>The Latest Recipes</h2><br> -->
-
 <?php
 require 'config.php';
 
-// // Connecting to db
-
-// $servername = $config['db_host'];
-// $username = $config['db_user'];
-// $password = $config['db_pass'];
-// $dbname = $config['db_name'];
-
-// // Creating connection with db
-// $conn = new mysqli($servername, $username, $password, $dbname);
-
 // Connection check
+
 if ($conn->connect_error) {
     echo "<div class=\"no-user-banner\">
             <h1>Sorry, we cannot process your request at this time, please try again later</h1>
@@ -26,13 +15,9 @@ if ($conn->connect_error) {
     exit;
 }
 
-// mysqli_select_db("recipe", $con) or die ('Sorry, could not connect to database');
-
 $query = "SELECT recipeid, poster, title, shortdesc, image_path FROM recipes ORDER BY recipeid DESC LIMIT 0,6";
 
 $result = $conn->query($query);
-
-// $result = mysqli_query($con, $query) or die('Sorry, could not get recipes at this time');
 
 if (mysqli_num_rows($result) == 0) {
     echo "<div class=\"no-user-banner\">
@@ -57,6 +42,7 @@ if (mysqli_num_rows($result) == 0) {
         $image = $row['image_path'];
 
         // Checking if `image_path` is `NULL` and setting the path to `default.jpg` if so
+
         if ($image == null) {
             $image = 'img/default.jpg';
         }

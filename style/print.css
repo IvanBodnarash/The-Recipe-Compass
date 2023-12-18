@@ -1,21 +1,7 @@
 body {
-    /* background-color: #ffffff; */
-    /* color: rgb(58, 58, 58); */
     color: #414141;
-    /* font-family: "Times New Roman", serif; */
     font-family: 'Varela Round', sans-serif;
-    /* font-size: 12pt; */
 }
-
-
-/* h2 {
-    font-size: 16pt;
-}
-
-
-h3 {
-    font-size: 14pt;
-} */
 
 #header, #nav, #footer {
     display: none;
@@ -39,7 +25,6 @@ h3 {
 }
 
 .recipe-block-single {
-    /* background-color: #79947991; */
     background-color: #ffffff5b;
     padding: 25px;
     margin-bottom: 30px;
@@ -58,7 +43,6 @@ h3 {
     border-radius: 5px;
     object-fit: cover;
     object-position: center;
-    /* box-shadow: 1px 4px 5px 0px #00000068; */
 }
 
 .sidebar-wrapper {
@@ -76,15 +60,12 @@ h3 {
 
 .recipe-sidebar h1 {
     font-size: 20px;
-    /* color: rgb(58, 58, 58); */
     margin-bottom: 5px;
     padding-bottom: 5px;
-    /* border-bottom: 1px solid rgb(58, 58, 58); */
 }
 
 .recipe-sidebar .description {
     font-size: 16px;
-    /* margin-top: 15px; */
     text-align: justify;
 }
 
@@ -93,7 +74,6 @@ h3 {
     flex-direction: row;
     align-items: center;
     margin-bottom: 5px;
-    /* margin-bottom: 15px; */
 }
 
 .author-inner-block img {
@@ -103,14 +83,10 @@ h3 {
 .author-inner-block h2 {
     margin-left: 15px;
     font-size: 18px;
-    /* color: white; */
 }
 
 .author-block span {
     font-size: 14px;
-    /* color: #bce3bd; */
-    /* margin-top: 15px; */
-    /* padding: 10px 0; */
 }
 
 .ingredients-block {
@@ -134,15 +110,10 @@ h3 {
 
 .form-check label {
     font-size: 16px;
-    /* width: 80%; */
-    /* color: #425a44; */
-    /* line-height: 1.2; */
 }
 
 .form-check-input {
     margin-right: 15px;
-    /* width: 20px;
-    height: 20px; */
 }
 
 .form-check-input:checked {
@@ -160,23 +131,19 @@ h3 {
 }
 
 .directions-list {
-    /* margin-left: 20px; */
     font-size: 18px;
     width: 80%;
-    /* color: #425a44; */
     line-height: 1.7;
 }
 
 .directions-item {
     font-size: 16px;
     margin-top: 5px;
-    /* display: flex; */
     align-items: center;
 }
 
 .page-banner {
     text-align: center;
-    /* margin: auto; */
     padding: 5px;
     display: flex;
     flex-direction: column;
@@ -193,6 +160,5 @@ h3 {
 
 .page-banner nav a {
     text-decoration: none;
-    /* color: white; */
     cursor: pointer;
 }

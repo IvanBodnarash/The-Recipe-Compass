@@ -1,14 +1,11 @@
 <main class="home-section">
     <div class="search-container">
-        <!-- <div class="bg"></div> -->
         <h1>Discover Fantastic Recipes</h1>
         <p>Get the process of making awesome delicious meals for your family and friends</p>
         <div class="search-box">
             <form action="index.php" method="get">
                 <div class="input-container">
-                    <!-- <label for=""><span>search for recipe:</span></label> -->
                     <input class="search-input" name="searchFor" type="text" placeholder="Search Recipe">
-                    <!-- <input name="goButton" type="submit" value="find"> -->
                     <button type="submit">
                         <i class="fa-solid fa-magnifying-glass"></i>
                         Search

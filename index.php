@@ -7,8 +7,6 @@
     <title>The Recipe Compass</title>
     <link rel="icon" href="img/brand-logo.png" type="image/x-icon">
 
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" media="print" type="text/css" href="print.css">
     <link rel="stylesheet" type="text/css" href="style/main.css">
@@ -25,33 +23,8 @@
         <div id="main">
             <?php
 
-            // // Default content if 'content' parameter is not set
-            // $defaultContent = "main";
-            
-            // // Define an array of allowed content
-            // $allowedContent = ["main", "about", "recipes", "contact"];
-            
-            // // Get the 'content' parameter or use the default
-            // $content = isset($_GET['content']) ? $_GET['content'] : $defaultContent;
-            
-            // // Check if the content is allowed
-            // if (!in_array($content, $allowedContent)) {
-            //     echo "File '$content' not found";
-            // } else {
-            //     $nextpage = __DIR__ . "/{$content}.inc.php";
-            //     if (file_exists($nextpage)) {
-            //         include($nextpage);
-            //     } else {
-            //         echo "File '$nextpage' not found";
-            //     }
-            //     echo "<h1>{$content}</h1>";
-            // }
-            
-
             if (!isset($_REQUEST['content'])) {
                 include("home.inc.php");
-                // include("main.inc.php");
-
             } else {
                 $content = $_REQUEST['content'];
                 $nextpage = $content . ".inc.php";
@@ -60,8 +33,6 @@
                 } else {
                     echo "File '$nextpage' not found";
                 }
-
-                // echo "<h1>$content</h1>";
             }
 
             ?>

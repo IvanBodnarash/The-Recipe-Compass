@@ -1,6 +1,5 @@
 <?php
 // Auth check
-// session_start();
 if(!isset($_SESSION['valid_recipe_user'])) {
     header("Location: index.php?content=login");
     exit();
@@ -47,10 +46,6 @@ if(!isset($_SESSION['valid_recipe_user'])) {
 
             <div id="filestack-picker">
                 <label class="label-typical" for="">Featured Photo</label>
-                <!-- <div class="insert-photo-container">
-                    <input type="file" id="upload-button" value="Upload Image">
-                    <input type="hidden" name="image_url" id="image-url">
-                </div> -->
                 <div class="picker-wrapper">
                     <label for="upload-button" class="custom-upload-button">
                         Upload Photo
@@ -62,8 +57,6 @@ if(!isset($_SESSION['valid_recipe_user'])) {
                     <div class="file-name" id="file-name"></div>
                 </div>
             </div>
-        
-            <!-- <input type="file" name="file" accept="image/*"><br> -->
         
             <input class="submit-btn" type="submit" value="Submit">
             <input type="hidden" name="content" value="newrecipe">

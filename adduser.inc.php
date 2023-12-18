@@ -3,14 +3,6 @@ require 'config.php';
 
 // // Connecting to db
 
-// $servername = $config['db_host'];
-// $username = $config['db_user'];
-// $password = $config['db_pass'];
-// $dbname = $config['db_name'];
-
-// // Creating connection with db
-// $conn = new mysqli($servername, $username, $password, $dbname);
-
 if ($conn->connect_error) {
     echo "<div class=\"no-user-banner\">
             <h1>Sorry, we cannot process your request at this time, please try again later</h1>
@@ -22,6 +14,7 @@ if ($conn->connect_error) {
 }
 
 // Input validation and data processing
+
 $userid = $_POST['userid'];
 $password = $_POST['password'];
 $password2 = $_POST['password2'];
@@ -55,6 +48,7 @@ if ($password != $password2) {
 }
 
 // Checking if the user exists
+
 $query = "SELECT userid FROM users WHERE userid = ?";
 $stmt = $conn->prepare($query);
 $stmt->bind_param("s", $userid);
@@ -76,6 +70,7 @@ if ($row !== null && isset($row['userid']) && $row['userid'] == $userid) {
 }
 
 // Inserting a user into the database
+
 $query = "INSERT INTO users (userid, password, fullname, email) VALUES (?, ?, ?, ?)";
 $stmt = $conn->prepare($query);
 $stmt->bind_param("ssss", $userid, $hashed_password, $fullname, $email);

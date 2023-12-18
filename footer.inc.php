@@ -1,4 +1,3 @@
-<!-- <a href="mailto:me@myhost.com"> -->
 <div class="footer-container">
     <div class="short-inf-block">
         <div class="inf-item">
