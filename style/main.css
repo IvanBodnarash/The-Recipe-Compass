@@ -5,10 +5,19 @@
     padding: 0;
     margin: 0;
     font-family: 'Varela Round', sans-serif;
+    transition: opacity 0.7s ease;
 }
 
 html {
     scroll-behavior: smooth;
+}
+
+body {
+    opacity: 0;
+}
+
+body.loaded {
+    opacity: 1;
 }
 
 /* DESKTOP */
@@ -148,17 +157,45 @@ body ._lock {
 /* HOME SECTION */
 
 .search-container {
+    text-align: center;
+    color: #ecf4eb;
+    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+}
+
+.search-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(../img/home-search-section-img.jpg) center/cover no-repeat fixed;
+    z-index: -1;
+    transform: translateY(-15px);
+    /* Adjust the opacity as needed */
+}
+
+/* Adjust the padding of the search-container to create space for the parallax effect */
+.search-container {
+    position: relative;
+    padding: 190px 0 190px 0;
+    /* Adjust the bottom padding as needed */
+    overflow: hidden;
+}
+
+/* .search-container {
     background-image: url(../img/home-search-section-img.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    /* background-position: center center; */
     text-align: center;
     padding: 190px 0 190px 0;
     color: #ecf4eb;
     font-weight: 400;
     display: flex;
     flex-direction: column;
-}
+} */
 
 .search-container h1 {
     font-size: 38px;
@@ -217,6 +254,13 @@ body ._lock {
 
 /* FEATURE BLOCK */
 
+.feature {
+    padding-top: 15px;
+    position: relative;
+    z-index: 2;
+    background-color: white;
+}
+
 .feature-block {
     margin: 70px 0;
     display: flex;
@@ -224,6 +268,8 @@ body ._lock {
     /* flex-wrap: wrap; */
     justify-content: center;
     align-items: stretch;
+    z-index: 1;
+    position: relative;
 }
 
 .feature-item {

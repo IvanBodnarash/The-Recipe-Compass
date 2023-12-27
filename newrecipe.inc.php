@@ -58,7 +58,7 @@ if(!isset($_SESSION['valid_recipe_user'])) {
                 </div>
             </div>
         
-            <input class="submit-btn" type="submit" value="Submit" onclick="submitForm()">
+            <input class="submit-btn" type="submit" value="Submit">
             <input type="hidden" name="content" value="newrecipe">
         </form>
     </div>

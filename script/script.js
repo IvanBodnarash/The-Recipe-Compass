@@ -167,15 +167,18 @@ function displayFileName() {
     let fileInput = document.getElementById('upload-button');
     let fileNameDisplay = document.getElementById('file-name');
     
-    if (fileInput.files.length > 0) {
-        let fileName = fileInput.files[0].name;
-
-        if (fileName.length > 25) {
-            fileName = fileName.substring(0, 22) + '...';
+    setTimeout(() => {
+        if (fileInput.files.length > 0) {
+            let fileName = fileInput.files[0].name;
+    
+            if (fileName.length > 25) {
+                fileName = fileName.substring(0, 22) + '...';
+            }
+    
+            fileNameDisplay.textContent = fileName;
+        } else {
+            fileNameDisplay.textContent = '';
         }
-
-        fileNameDisplay.textContent = fileName;
-    } else {
-        fileNameDisplay.textContent = '';
-    }
+    }, 1500);
 }
+
