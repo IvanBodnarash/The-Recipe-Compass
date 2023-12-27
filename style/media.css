@@ -1479,6 +1479,8 @@
     .sort-block-wrapper {
         display: block;
         text-align: center;
+        width: 85%;
+        margin: auto;
     }
 
     .sort-block {
@@ -1498,8 +1500,8 @@
     }
 
     .recipes-wrapper {
-        margin-left: 10px;
-        margin-right: 10px;
+        margin-left: 5px;
+        margin-right: 5px;
     }
 
     .comment-form textarea {
