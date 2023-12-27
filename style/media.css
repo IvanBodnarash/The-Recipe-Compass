@@ -704,7 +704,7 @@
     }
 
     .navbar {
-        padding: 15px 20px;
+        padding: 10px 20px;
         position: relative;
     }
 
@@ -1130,6 +1130,11 @@
 
 @media (max-width: 550px) {
 
+    .navbar {
+        padding: 8px 20px;
+    }
+
+
     /* HOME */
 
     .search-container {
@@ -1479,7 +1484,7 @@
     .sort-block-wrapper {
         display: block;
         text-align: center;
-        width: 85%;
+        width: 80%;
         margin: auto;
     }
 
@@ -1556,7 +1561,7 @@
     /* NAVIGATION */
 
     .navbar {
-        padding: 15px 5px;
+        padding: 5px 5px;
     }
 
     .menu-icon {
